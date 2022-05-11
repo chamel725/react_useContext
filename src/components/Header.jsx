@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+import { UserContext } from '../context/UserContext';
 
 //isDark를 props로 전달 받음.
-const Header = ({ isDark })=>{
+const Header = ()=>{
+    const {isDark} = useContext(ThemeContext);
+    const user = useContext(UserContext);
+    console.log(isDark);
+    console.log(user);
     return(
         <header
         className="header"
@@ -11,7 +17,7 @@ const Header = ({ isDark })=>{
             color: isDark ? 'white' : 'black',
         }}
         >
-            <h1>Welcome 홍길동!</h1>
+            <h1>Welcome {user}!</h1>
         </header>
     );
 };
